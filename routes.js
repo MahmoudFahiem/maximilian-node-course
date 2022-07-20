@@ -41,20 +41,3 @@ const reqHandler = (req, res) => {
 };
 
 module.exports = reqHandler;
-
-// OR
-
-// module.exports = {
-//   reqHandler,
-//   anotherProp: "Test",
-// };
-
-// OR
-
-// module.exports.reqHandler = reqHandler;
-// module.exports.anotherProp = "Test";
-
-// OR
-
-// exports.reqHandler = reqHandler;
-// exports.anotherProp = "Test";
