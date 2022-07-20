@@ -27,10 +27,18 @@ const server = http.createServer((req, res) => {
     return req.on("end", () => {
       const parseBody = Buffer.concat(body).toString();
       const message = parseBody.split("=")[1];
-      fs.writeFileSync("message.txt", message);
-      res.statusCode = 302;
-      res.setHeader("Location", "/");
-      return res.end();
+      /**
+       * Blocks code until the file is created
+       */
+      // fs.writeFileSync("message.txt", message);
+      /**
+       *  Doesn't block code until the file is created
+       */
+      fs.writeFile("message.txt", message, (err) => {
+        res.statusCode = 302;
+        res.setHeader("Location", "/");
+        return res.end();
+      });
     });
   }
 
